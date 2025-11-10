@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AppRepairThings</string>
+    <string name="createreq">Заявка📄</string>
+    <string name="stats">Статистика👁‍🗨</string>
+    <string name="bonusreq">Доп. услуги📋</string>
+    <string name="createreqrepair">Создание заявки на ремонт</string>
+    <string name="createreqbonus">Создание заявки на доп. услуги</string>
+    <string name="sendreq">Отправить заявку</string>
+    <string name="timetemplate">00.00.0000 00:00:00</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

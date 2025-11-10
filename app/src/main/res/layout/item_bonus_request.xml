@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@drawable/rounded_corner_background"
+    android:layout_margin="4dp"
+    android:elevation="2dp">
+
+    <!-- Avatar Circle -->
+    <TextView
+        android:id="@+id/bonusAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:background="@drawable/circle_background" />
+
+    <!-- Content Area -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="12dp">
+
+        <!-- Name -->
+        <TextView
+            android:id="@+id/bonusName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_white_1000"
+            android:text="Name"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Phone -->
+        <TextView
+            android:id="@+id/bonusPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_white_1000"
+            android:text="Phone"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp" />
+
+        <!-- Device -->
+        <TextView
+            android:id="@+id/bonusDevice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_white_1000"
+            android:text="Device"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp" />
+
+        <!-- Date and Status in one row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/bonusDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/md_white_1000"
+                android:text="Date"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/bonusStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textColor="@color/md_white_1000"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:padding="4dp"
+                android:background="@android:color/darker_gray" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

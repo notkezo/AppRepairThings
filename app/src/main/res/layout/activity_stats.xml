@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_black_1000"
+    tools:context=".Stats">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/allrequests"
+            android:layout_width="100dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:text="Общее количество заявок на ремонт: 0"
+            android:textColor="@color/md_grey_400"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout1" />
+
+        <TextView
+            android:id="@+id/requestsinwork"
+            android:layout_width="100dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="4dp"
+            android:text="Заявки на ремонт в работе: 0"
+            android:textColor="@color/md_orange_800"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/allrequests"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/requestsdone"
+            android:layout_width="100dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="4dp"
+            android:text="Заявки на ремонт выполнены: 0"
+            android:textColor="@color/md_green_800"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/requestsinwork"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/allbonus"
+            android:layout_width="100dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:text="Общее количество заявок на доп. услуги: 0"
+            android:textColor="@color/md_grey_400"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/requestsdone" />
+
+        <!-- Add section header for All Items -->
+
+        <TextView
+            android:id="@+id/bonusinwork"
+            android:layout_width="100dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:text="Заявки на доп. услуги в работе: 0"
+            android:textColor="@color/md_orange_800"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/allbonus"
+            app:layout_constraintTop_toBottomOf="@+id/requestsinwork" />
+
+        <TextView
+            android:id="@+id/bonusdone"
+            android:layout_width="100dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:text="Заявки на доп. услуги выполнены: 0"
+            android:textColor="@color/md_green_800"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/bonusinwork"
+            app:layout_constraintTop_toBottomOf="@+id/requestsdone" />
+
+        <TextView
+            android:id="@+id/allItemsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:text="Все заявки"
+            android:textColor="@color/md_white_1000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bonusdone" />
+
+        <!-- Change FrameLayout to RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allitems"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allItemsHeader" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/md_teal_300"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/md_teal_300"
+            android:text="⬅"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/stats"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
