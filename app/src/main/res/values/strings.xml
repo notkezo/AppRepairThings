@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppRepairThings</string>
+    <string name="app_name">Менеджер заявок</string>
     <string name="createreq">Заявка📄</string>
     <string name="stats">Статистика👁‍🗨</string>
     <string name="bonusreq">Доп. услуги📋</string>
