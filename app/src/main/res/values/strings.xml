@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Менеджер заявок</string>
-    <string name="createreq">Заявка📄</string>
-    <string name="stats">Статистика👁‍🗨</string>
-    <string name="bonusreq">Доп. услуги📋</string>
+    <string name="createreq">🛠Заявка</string>
+    <string name="stats">📊Статистика</string>
+    <string name="bonusreq">➕Доп. услуги</string>
     <string name="createreqrepair">Создание заявки на ремонт</string>
     <string name="createreqbonus">Создание заявки на доп. услуги</string>
     <string name="sendreq">Отправить заявку</string>
