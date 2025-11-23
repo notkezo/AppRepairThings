@@ -6,7 +6,10 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable; // NEW: Импорт
+import android.text.TextWatcher; // NEW: Импорт
 import android.widget.Button;
+import android.widget.EditText; // NEW: Импорт
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -29,6 +32,9 @@ public class CreateReqBonus extends AppCompatActivity {
 
         // Initialize ViewModel
         repairViewModel = new ViewModelProvider(this).get(RepairViewModel.class);
+
+        // NEW: Настраиваем маску для телефона
+        setupPhoneMask();
 
         // Check if we're in edit mode
         if (getIntent().hasExtra("EDIT_MODE")) {
@@ -56,6 +62,78 @@ public class CreateReqBonus extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             finish(); // Just finish the activity to go back
         });
+    }
+
+    // NEW: Метод добавления маски
+    private void setupPhoneMask() {
+        TextInputLayout phoneLayout = findViewById(R.id.textInputLayout2);
+        EditText phoneEditText = phoneLayout.getEditText();
+
+        if (phoneEditText != null) {
+            phoneEditText.addTextChangedListener(new TextWatcher() {
+                boolean isFormatting;
+                boolean backspacing;
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    backspacing = count > after;
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (isFormatting) return;
+
+                    isFormatting = true;
+
+                    // Убираем всё кроме цифр
+                    String digits = s.toString().replaceAll("\\D", "");
+
+                    // Если начали с 7 или 8, убираем первую цифру, чтобы формат всегда был +7
+                    if (!digits.isEmpty() && (digits.startsWith("7") || digits.startsWith("8"))) {
+                        digits = digits.substring(1);
+                    }
+
+                    StringBuilder formatted = new StringBuilder();
+
+                    if (!digits.isEmpty()) {
+                        formatted.append("+7");
+
+                        if (digits.length() > 0) {
+                            formatted.append(" (");
+                            int len = Math.min(digits.length(), 3);
+                            formatted.append(digits.substring(0, len));
+                        }
+
+                        if (digits.length() > 3) {
+                            formatted.append(") ");
+                            int len = Math.min(digits.length(), 6);
+                            formatted.append(digits.substring(3, len));
+                        }
+
+                        if (digits.length() > 6) {
+                            formatted.append("-");
+                            int len = Math.min(digits.length(), 8);
+                            formatted.append(digits.substring(6, len));
+                        }
+
+                        if (digits.length() > 8) {
+                            formatted.append("-");
+                            int len = Math.min(digits.length(), 10);
+                            formatted.append(digits.substring(8, len));
+                        }
+                    }
+
+                    phoneEditText.setText(formatted.toString());
+                    phoneEditText.setSelection(phoneEditText.getText().length());
+
+                    isFormatting = false;
+                }
+            });
+        }
     }
 
     private void prefillFormData() {
@@ -89,6 +167,10 @@ public class CreateReqBonus extends AppCompatActivity {
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
+
+        // NEW: Запрещаем выбирать прошедшие даты
+        datePicker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
         datePicker.show();
     }
 
@@ -105,6 +187,12 @@ public class CreateReqBonus extends AppCompatActivity {
         // Validate inputs
         if (name.isEmpty() || phone.isEmpty() || device.isEmpty() || selectedDate.isEmpty()) {
             Toast.makeText(this, "Пожалуйста заполните все поля", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // NEW: Проверка формата телефона
+        if (phone.length() < 18) {
+            Toast.makeText(this, "Введите корректный номер телефона", Toast.LENGTH_SHORT).show();
             return;
         }
 
